@@ -80,6 +80,21 @@ console.log(
 
 
 // Деструктуризація об'єктів з HW-12
+const user = {
+  name: "Mariya",
+  age: 14,
+  hobby: "dancing",
+  city: "Zaporizhzhia",
+  premium: true,
+};
+user.mood = "happy";
+user.hobby = "skydiving";
+user.premium = false;
+
+for (const [key, value] of Object.entries(user)) {
+  console.log(`${key}: ${value}`);
+}
+
 const officeETasks = {
   Zhenya: 12,
   Ira: 15,
@@ -103,7 +118,6 @@ function findBestEmployee(employees) {
 
 console.log(findBestEmployee(officeETasks));
 
-
 const hotelESalaries = {
   Linda: 45000,
   Anton: 62000,
@@ -120,7 +134,6 @@ function countTotalSalary(employees) {
   return total;
 }
 console.log(countTotalSalary(hotelESalaries));
-
 
 const countries = [
   { country: "Bulgaria", weather: "sunny", population: 6800000 },
@@ -142,7 +155,6 @@ console.log(getAllPropValues(countries, "country"));
 console.log(getAllPropValues(countries, "weather"));
 console.log(getAllPropValues(countries, "population"));
 
-
 const products = [
   { name: "cake", price: 80, quantity: 5 },
   { name: "sweets", price: 70, quantity: 18 },
@@ -163,9 +175,9 @@ console.log(calculateTotalPrice(products, "strawberry"));
 console.log(calculateTotalPrice(products, "bread"));
 
 
-const Transaction = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdraw",
+const transaction = {
+  deposit: "deposit",
+  withdraw: "withdraw",
 };
 
 const account = {
@@ -188,8 +200,8 @@ const account = {
       return;
     }
     this.balance += amount;
-    const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
-    this.transactions.push(transaction);
+    const newTransaction = this.createTransaction(amount, transaction.deposit);
+    this.transactions.push(newTransaction);
     console.log(
       `Баланс успішно поповнено на ${amount} грн! Поточний баланс: ${this.balance} грн`
     );
@@ -205,8 +217,8 @@ const account = {
       return;
     }
     this.balance -= amount;
-    const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
-    this.transactions.push(transaction);
+    const newTransaction = this.createTransaction(amount, transaction.withdraw);
+    this.transactions.push(newTransaction);
     console.log(
       `${amount} грн успішно знято з балансу! Поточний баланс: ${this.balance} грн`
     );
@@ -242,8 +254,8 @@ account.deposit(3000);
 account.withdraw(4000);
 account.getBalance();
 console.log(account.getTransactionDetails(3));
-console.log(account.getTransactionTotal(Transaction.DEPOSIT));
-console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+console.log(account.getTransactionTotal(transaction.deposit));
+console.log(account.getTransactionTotal(transaction.withdraw));
 
 
 // ЗАВДАННЯ З ПОПЕРЕДНЬОГО ЗАНЯТТЯ
